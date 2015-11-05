@@ -1,0 +1,43 @@
+
+<%= form_tag("maingame#create", method: "post", remote: true) do %>
+  <%= text_field_tag 'q', '', size: 75 %>
+
+  <%= submit_tag("Send Action") %>
+<% end %>
+
+    <script type="text/javascript">
+
+
+        var game = new Phaser.Game(1280, 720, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+
+        function preload () {
+
+            game.load.image('logo', '<%= image_path('phaser.png')%>');
+            game.load.image('sky', '<%= image_path('sky.png')%>');
+            game.load.image('diamond', '<%= image_path('diamond.png')%>');
+
+        }
+
+        function create () {
+          game.world.setBounds(0 ,0 , 1280 , 720);
+          game.physics.startSystem(Phaser.Physics.P2JS);
+          game.physics.p2.setBoundsToWorld(true,true,true,true,false);
+          game.physics.p2.gravity.y = 1000;
+          game.physics.p2.restitution = 0.5;
+          //  A simple background for our game
+
+   //  The platforms group contains the ground and the 2 ledges we can jump on
+
+ blockCollisionGroup = game.physics.p2.createCollisionGroup();
+ game.physics.p2.updateBoundsCollisionGroup();
+
+
+
+        }
+        function update() {
+
+
+
+}
+
+    </script>
